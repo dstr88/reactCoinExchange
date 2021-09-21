@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Ticker</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="root"></tbody>
+        </table>
+    <script type="text/babel">
+
+class Coin extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+                <tr>
+                    <td>{this.props.name}</td>
+                    <td>{this.props.ticker}</td>
+                    <td>{this.props.price}</td>
+                </tr>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <React.Fragment>
+            <Coin name="Bitcoin" ticker="BTC" price="$50000.21" />
+            <Coin name="Ethereum" ticker= "ETH" price="$3500.99" />
+        </React.Fragment>,
+        document.getElementById("root")
+    );
+
+    /*React.createElement(
+        React.Fragment,
+        null,
+        React.createElement(HelloMessage, { name:  "Zote"}),
+        React.createElement(HelloMessage, { name: "Sara"})
+    );
+        */
+    </script>
+    </body>
+</html>
+
+    <!--
+
+        There are two types of components first is the one above, which is  functional component.  The competitor is a  stateless component. Stateless components accept data and display it.  They are responsibile for the rendering ofthe UI. while the function requires a click
+
+    Stateful or class based components extend the component class of the react library.  They are known as stateful components because they are responsible for the implimentation of the logic.  It has different phases of the React lifecyfle including: rendering, mounting, updating and unmounting stage.
+    Stateful components have a local state object which can be manipulated internally.
+
+    Class based components: must have a render() method, React lifecycle methods (like componentDidMount, etc. ) are used.
+    It has more code, hence is less readable
+
+    Functional components: do not have a render() method.  React hooks are there to be as a better alternative to the traidtional react lifecycle methods.  It has less code and hence is more readable.  Stateless components do not have a local state object but we can add hooks in it.
+
+
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this section for a production-ready setup with JSX:
+      https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
+
+      In a larger project, you can use an integrated toolchain that includes JSX instead:
+      https://reactjs.org/docs/create-a-new-react-app.html
+
+      You can also use React without JSX, in which case you can remove Babel:
+      https://reactjs.org/docs/react-without-jsx.html
+    -->
